@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import random
 import pandas as pd
 import numpy as np
-from graph_initialization import GraphInit
 import networkit as nk
 import math
 
