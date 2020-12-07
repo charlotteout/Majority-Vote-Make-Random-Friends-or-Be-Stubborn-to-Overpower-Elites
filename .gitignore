@@ -1,0 +1,10 @@
+ .DS_Store
+.idea/
+CM3/
+averages.py
+d-reg_IMP.py
+networks/
+old_simulation_peleg.py
+plots.py
+venv/
+__pycache__/
