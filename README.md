@@ -1,7 +1,7 @@
 ****
 ## Explenation on the project 
 
-![](./social network.png)
+![](./social_network.png)
 
 In this project, we look at opinion diffusion on graphs. Here, a graph G represents a social network. We assume that initially each node is colored either black or white, which corresponds to a positive or negative opinion regarding a consumer product or a technolog- ical innovation.
 
