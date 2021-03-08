@@ -1,12 +1,24 @@
-from density_exp.simulation_dens import simulation_dens
+from MM_dens.simulation import simulation_dens
 import networkx as nx
 import networkit as nk
 import os
 abs_path = os.path.abspath(os.path.dirname(__file__))
 
 def bigsimulation_dens(graph_loc, type_graph, def_ratio, edge_constant_mult, small):
+    """
+        :param graph_loc: location of the graph indicating which social network we are considering
+        :param reps: number of times we want to repeat this process
+        :param edge_constant_mult: integer, multiplication factor with what we multiply the
+        d-regular random graph in the counter measure
+        :param small: Boolean, true if we only want to check values around 0.5
+        :param graph_types: A graph type we are considering, i.e. "BA" or "ER"
+        :return: a list of final
+        densities after the majority model on a random configuration
+        """
     print("graph_loc:", graph_loc)
     temp_graph = nx.read_edgelist(os.path.join(abs_path, graph_loc), create_using=nx.Graph(), nodetype=int)
+    mapping = dict(zip(temp_graph, range(0, temp_graph.number_of_nodes() - 1)))
+    temp_graph = nx.relabel_nodes(temp_graph, mapping)
     total = sum(j for i, j in list(temp_graph.degree(temp_graph.nodes)))
     av_deg = total / temp_graph.number_of_nodes()
     p = total / (temp_graph.number_of_nodes() * (temp_graph.number_of_nodes() - 1))
@@ -18,7 +30,7 @@ def bigsimulation_dens(graph_loc, type_graph, def_ratio, edge_constant_mult, sma
         our_graph = nx.barabasi_albert_graph(n=temp_graph.number_of_nodes(), m=int(av_deg))
     if type_graph == 'Hyp':
         print("Hyp graph")
-        hg = nk.generators.HyperbolicGenerator(n=temp_graph.number_of_nodes(), k=av_deg, gamma=2.5, T=0.5)
+        hg = nk.generators.HyperbolicGenerator(n=temp_graph.number_of_nodes(), k=av_deg, gamma=2.5, T=0.6)
         hgG = hg.generate()
         our_graph = nk.nxadapter.nk2nx(hgG)
     if type_graph == 'DReg':
@@ -45,13 +57,13 @@ def bigsimulation_dens(graph_loc, type_graph, def_ratio, edge_constant_mult, sma
     final_dens_list = []
     if small == True:
         for init_dens in [0.475,0.5,0.525]:
-            final_dens = simulation_dens(our_graph=our_graph, honest=True, initial_prob_dens=init_dens, def_ratio=def_ratio)
+            final_dens = simulation_dens(our_graph=our_graph, initial_prob_dens=init_dens, def_ratio=def_ratio)
             final_dens_list.append(final_dens)
-        #print(final_dens_list)
+        print(final_dens_list)
         return(final_dens_list)
     else:
         for init_dens in [0.1,0.2,0.3,0.4,0.45,0.475,0.5,0.525,0.55,0.575,0.6,0.7,0.8,0.9]:
-            final_dens = simulation_dens(our_graph=our_graph, honest=True, initial_prob_dens=init_dens, def_ratio=def_ratio)
+            final_dens = simulation_dens(our_graph=our_graph, initial_prob_dens=init_dens, def_ratio=def_ratio)
             final_dens_list.append(final_dens)
         print(final_dens_list)
         return(final_dens_list)

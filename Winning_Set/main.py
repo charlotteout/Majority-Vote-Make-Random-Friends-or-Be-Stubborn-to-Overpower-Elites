@@ -2,9 +2,11 @@ import sys
 import os
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(ROOT_DIR)
-from TT_dens.loop import loopgraphtypes
+from Winning_Set.loop import loopgraphtypes
+
 from Winning_Set import slashdot_loc, twitter_loc, fb_loc, yt_loc
 
 
 if __name__ == "__main__":
-    loopgraphtypes(graph_loc=twitter_loc, reps=1, type_graphs=['ER', 'BA'], edge_constant_mult=1, stubrat_blue=0.8, stubrat_red=0.7)
+    loopgraphtypes(graph_loc=twitter_loc, graph_types=['ER'], counter_measure=True,
+                   def_ratio=0.5, mult=2)

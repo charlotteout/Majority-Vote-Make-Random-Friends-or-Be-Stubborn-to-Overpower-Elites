@@ -7,4 +7,4 @@ from conjecture_testing.loopdens import loop_p
 
 
 if __name__ == "__main__":
-    loop_p(reps=5, n=1000000, p=11/1000000)
+    loop_p(reps=5, n=1000000, p=13/1000000)
