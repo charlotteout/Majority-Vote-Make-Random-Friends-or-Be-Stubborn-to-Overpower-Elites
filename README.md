@@ -1,5 +1,15 @@
 ****
-###Dependencies and Data
+## Explenation on the project 
+
+In this project, we look at opinion diffusion on graphs. Here, a graph G represents a social network. We assume that initially each node is colored either black or white, which corresponds to a positive or negative opinion regarding a consumer product or a technolog- ical innovation.
+
+To model the influence that the people around you (your neighbors in the social network), several update rules have been proposed. A well known example of such an update rule is the "majority model", in which  each round all nodes simultaneously update their color to the most frequent color among their connections.
+
+In this project we investigate the majority model and a related model called the (psi1,psi2)-majority model both theoretically as well as experimentally on social networks. The code used for the experimental part can be found in this repository. The exact structure and fuction of the code is explained later in this readme (under code structure). 
+
+The paper we wrote including the theoretical results and the figures of the experimental results is also included in this repo, which contains more information on what exactly we investigated
+
+## Dependencies and Data
 To run the code, please make sure to download the datasets
 from the following sites:
 
@@ -40,7 +50,7 @@ The code in particular heavily depends on
 networkit==5.0.1
 networkx==2.3
 ```
-#Code Structure
+## Code Structure
 The code is split up in 7 small modules. 
 
 The modules we implemented are
@@ -68,7 +78,7 @@ calls the simulation function
 - loop: a file with dummy functions to loop over several graph types or in the case that the
 experiment involves randomness repeat the experiment several times
 
-#How to run the experiments
+## How to run the experiments
 - To obtain the results in **Figure 1 (left)** 
 run the function in main in module Winning_Set with parameters 
 ```angular2
