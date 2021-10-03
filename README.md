@@ -3,6 +3,8 @@
 
 ![](./social_network.png)
 
+This is the code used for the paper Majority Vote: Make Random Friends or Be Stubborn to Overpower Elites, accepted at IJCAI 2021.
+
 In this project, we look at opinion diffusion on graphs. Here, a graph G represents a social network. We assume that initially each node is colored either black or white, which corresponds to a positive or negative opinion regarding a consumer product or a technolog- ical innovation.
 
 To model the influence that the people around you (your neighbors in the social network), several update rules have been proposed. A well known example of such an update rule is the "majority model", in which  each round all nodes simultaneously update their color to the most frequent color among their connections.
